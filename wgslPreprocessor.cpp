@@ -166,19 +166,18 @@ int main(int argc, char *argv[])
     std::map<std::filesystem::path, uint32_t> activeIncludes;
     // -----------------------------------------
 
-    std::cout << "Executable's folder: " << programBaseDir << std::endl;
-    std::cout << "Starting preprocessing for: " << absoluteInitialFilePath << std::endl;
-    std::cout << "Base directory for initial file's includes: " << initialFileProcessingBaseDir << std::endl;
+    //std::cout << "Executable's folder: " << programBaseDir << std::endl;
+    //std::cout << "Starting preprocessing for: " << absoluteInitialFilePath << std::endl;
+    //std::cout << "Base directory for initial file's includes: " << initialFileProcessingBaseDir << std::endl;
 
     // Pass the activeIncludes set to the preprocessing function
-    if (findIncludes(absoluteInitialFilePath, initialFileProcessingBaseDir, activeIncludes, 0))
-    {
-        std::cout << "findIncludes completed successfully." << std::endl;
-    }
-    else
+    if (!findIncludes(absoluteInitialFilePath, initialFileProcessingBaseDir, activeIncludes, 0))
     {
         std::cerr << "findIncludes failed." << std::endl;
-    }
+    } 
+    //else {
+    //    std::cout << "findIncludes completed successfully." << std::endl;
+    //}
 
     std::ofstream outputFile;
     std::ostream *outputPtr = &std::cout; // Default to stdout
